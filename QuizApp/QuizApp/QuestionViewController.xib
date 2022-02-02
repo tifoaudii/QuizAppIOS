@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionViewController" customModule="QuizApp" customModuleProvider="target">
+            <connections>
+                <outlet property="questionLabel" destination="6mu-hX-tBg" id="3qB-Mz-N2l"/>
+                <outlet property="tableView" destination="KhC-Li-dGD" id="ZqF-dy-aJH"/>
+                <outlet property="view" destination="iN0-l3-epB" id="84m-YT-Om6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mu-hX-tBg">
+                    <rect key="frame" x="62" y="82" width="41.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KhC-Li-dGD">
+                    <rect key="frame" x="0.0" y="114.5" width="414" height="747.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="oDa-ld-RDa"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="KhC-Li-dGD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="1kA-Tb-24n"/>
+                <constraint firstItem="KhC-Li-dGD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JfR-rX-qCc"/>
+                <constraint firstItem="6mu-hX-tBg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="62" id="Tyq-eV-kbk"/>
+                <constraint firstItem="KhC-Li-dGD" firstAttribute="top" secondItem="6mu-hX-tBg" secondAttribute="bottom" constant="12" id="jvZ-fL-rWC"/>
+                <constraint firstItem="6mu-hX-tBg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="38" id="pVR-XP-9Al"/>
+                <constraint firstItem="KhC-Li-dGD" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="wEf-jB-9JW"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
