@@ -14,10 +14,12 @@ final class QuestionViewController: UIViewController, UITableViewDataSource, UIT
     
     private var question: String = ""
     private var options: [String] = []
-    private var selection: ((String) -> Void)?
+    private var selection: (([String]) -> Void)?
+    private var selectionAnswer: [String] = []
+    
     private let reuseIdentifier: String = "CellIdentifier"
     
-    convenience init(question: String, options: [String], selection: @escaping (String) -> Void) {
+    convenience init(question: String, options: [String], selection: @escaping ([String]) -> Void) {
         self.init()
         self.question = question
         self.options = options
@@ -40,7 +42,21 @@ final class QuestionViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selection?(options[indexPath.row])
+        selection?(optionsSelected(in: tableView))
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.allowsMultipleSelection {
+            selection?(optionsSelected(in: tableView))
+        }
+    }
+    
+    private func optionsSelected(in tableView: UITableView) -> [String] {
+        guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else {
+            return []
+        }
+        
+        return selectedIndexPaths.map { options[$0.row] }
     }
     
     private func dequeueCell(in tableView: UITableView) -> UITableViewCell {

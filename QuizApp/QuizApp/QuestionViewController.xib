@@ -21,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mu-hX-tBg">
-                    <rect key="frame" x="62" y="82" width="41.5" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="12" y="68" width="57" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KhC-Li-dGD">
-                    <rect key="frame" x="0.0" y="114.5" width="414" height="747.5"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KhC-Li-dGD">
+                    <rect key="frame" x="0.0" y="109" width="414" height="753"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="oDa-ld-RDa"/>
@@ -40,9 +40,9 @@
             <constraints>
                 <constraint firstItem="KhC-Li-dGD" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="1kA-Tb-24n"/>
                 <constraint firstItem="KhC-Li-dGD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JfR-rX-qCc"/>
-                <constraint firstItem="6mu-hX-tBg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="62" id="Tyq-eV-kbk"/>
+                <constraint firstItem="6mu-hX-tBg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="Tyq-eV-kbk"/>
                 <constraint firstItem="KhC-Li-dGD" firstAttribute="top" secondItem="6mu-hX-tBg" secondAttribute="bottom" constant="12" id="jvZ-fL-rWC"/>
-                <constraint firstItem="6mu-hX-tBg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="38" id="pVR-XP-9Al"/>
+                <constraint firstItem="6mu-hX-tBg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="pVR-XP-9Al"/>
                 <constraint firstItem="KhC-Li-dGD" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="wEf-jB-9JW"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
