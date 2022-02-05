@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 import QuizEngine
 
-class QuizTest: XCTestCase {
+class QuizCoordinatorTest: XCTestCase {
     
     func test_startQuiz_whenAnswerOneCorrectlyFromTwoQuestions_shouldGiveCorrectScore() {
         let router = RouterSpy()
