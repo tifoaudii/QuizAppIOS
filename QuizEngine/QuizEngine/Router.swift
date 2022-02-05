@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol Router {
+public protocol Router {
     associatedtype Question: Hashable
-    associatedtype Answer
+    associatedtype Answer: Equatable
     
     func routeTo(question: Question, answerCallback: @escaping (Answer) -> Void)
     func routeTo(result: QuizResult<Question, Answer>)
