@@ -17,9 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
         
-        let viewController = QuestionViewController(question: "Question 1", options: ["O1", "O2"]) { answers in
-            print(answers)
-        }
+        let viewController = ResultViewController(resultSummary: "You answer correctly 1 from 2 questions", answers: [
+            .init(answer: "Indonesia", question: "Where rendang come from?", wrongAnswer: nil),
+            .init(answer: "Thailand", question: "Where phuket come from?", wrongAnswer: "Indonesia")
+        ])
         
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
