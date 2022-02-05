@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8339420927AEE53000B428FB /* QuizEngineiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8339420827AEE53000B428FB /* QuizEngineiOS.framework */; };
+		8339420A27AEE53000B428FB /* QuizEngineiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8339420827AEE53000B428FB /* QuizEngineiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		835B311B27A90BB70055791F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B311A27A90BB70055791F /* AppDelegate.swift */; };
 		835B311D27A90BB70055791F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B311C27A90BB70055791F /* SceneDelegate.swift */; };
 		835B312427A90BB80055791F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835B312327A90BB80055791F /* Assets.xcassets */; };
@@ -43,7 +45,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8339420B27AEE53000B428FB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8339420A27AEE53000B428FB /* QuizEngineiOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		833941DF27AEE42D00B428FB /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8339420827AEE53000B428FB /* QuizEngineiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizEngineiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		835B311727A90BB70055791F /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		835B311A27A90BB70055791F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		835B311C27A90BB70055791F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8339420927AEE53000B428FB /* QuizEngineiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +111,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		833941DE27AEE42D00B428FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8339420827AEE53000B428FB /* QuizEngineiOS.framework */,
+				833941DF27AEE42D00B428FB /* QuizEngine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		835B310E27A90BB70055791F = {
 			isa = PBXGroup;
 			children = (
 				835B311927A90BB70055791F /* QuizApp */,
 				835B313027A90BB80055791F /* QuizAppTests */,
 				835B311827A90BB70055791F /* Products */,
+				833941DE27AEE42D00B428FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +182,7 @@
 				835B311327A90BB70055791F /* Sources */,
 				835B311427A90BB70055791F /* Frameworks */,
 				835B311527A90BB70055791F /* Resources */,
+				8339420B27AEE53000B428FB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

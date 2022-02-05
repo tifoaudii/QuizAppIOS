@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import QuizEngine
+@testable import QuizEngineiOS
 
 class FlowTest: XCTestCase {
     

@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-import QuizEngine
+import QuizEngineiOS
 
 class QuizCoordinatorTest: XCTestCase {
     

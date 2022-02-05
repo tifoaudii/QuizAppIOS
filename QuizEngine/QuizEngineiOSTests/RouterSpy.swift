@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import QuizEngine
+import QuizEngineiOS
 
 class RouterSpy: Router {
     var questions: [String] = []
