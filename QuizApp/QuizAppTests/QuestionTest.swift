@@ -13,29 +13,29 @@ class QuestionTest: XCTestCase {
     
     func test_whenInitializeSingleAnswerQuestion_shouldConformHashType() {
         let inputType = "a string"
-        let sut = Question.singleAnswer(inputType)
+        let sut = QuizQuestion.singleAnswer(inputType)
         XCTAssertEqual(sut.hashValue, inputType.hashValue)
     }
     
     func test_whenInitializeMultipleAnswerQuestion_shouldConformHashType() {
         let inputType = "a string"
-        let sut = Question.multipleAnswer(inputType)
+        let sut = QuizQuestion.multipleAnswer(inputType)
         XCTAssertEqual(sut.hashValue, inputType.hashValue)
     }
     
     func test_whenInitializeSingleAnswerQuestion_shouldEquatable() {
-        XCTAssertEqual(Question.singleAnswer("a"), Question.singleAnswer("a"))
+        XCTAssertEqual(QuizQuestion.singleAnswer("a"), QuizQuestion.singleAnswer("a"))
     }
     
     func test_whenInitializeSingleAnswerQuestion_shouldNotEquatable() {
-        XCTAssertNotEqual(Question.singleAnswer("a"), Question.singleAnswer("b"))
+        XCTAssertNotEqual(QuizQuestion.singleAnswer("a"), QuizQuestion.singleAnswer("b"))
     }
     
     func test_whenInitializeMultipleAnswerQuestion_shouldEquatable() {
-        XCTAssertEqual(Question.multipleAnswer("a"), Question.multipleAnswer("a"))
+        XCTAssertEqual(QuizQuestion.multipleAnswer("a"), QuizQuestion.multipleAnswer("a"))
     }
     
     func test_whenInitializeMultipleAnswerQuestion_shouldNotEquatable() {
-        XCTAssertNotEqual(Question.multipleAnswer("a"), Question.multipleAnswer("b"))
+        XCTAssertNotEqual(QuizQuestion.multipleAnswer("a"), QuizQuestion.multipleAnswer("b"))
     }
 }
