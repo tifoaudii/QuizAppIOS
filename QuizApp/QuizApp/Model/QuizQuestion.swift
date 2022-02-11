@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Question<T: Hashable>: Hashable {
+enum QuizQuestion<T: Hashable>: Hashable {
     case singleAnswer(T)
     case multipleAnswer(T)
     
@@ -20,7 +20,7 @@ enum Question<T: Hashable>: Hashable {
         }
     }
     
-    static func ==<T>(lhs: Question<T>, rhs: Question<T>) -> Bool {
+    static func ==<T>(lhs: QuizQuestion<T>, rhs: QuizQuestion<T>) -> Bool {
         switch (lhs, rhs) {
         case (.singleAnswer(let a), .singleAnswer(let b)):
             return a == b
