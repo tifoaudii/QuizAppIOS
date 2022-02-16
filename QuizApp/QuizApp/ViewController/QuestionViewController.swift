@@ -12,8 +12,9 @@ final class QuestionViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    private var question: String = ""
-    private var options: [String] = []
+    private(set) var question: String = ""
+    private(set) var options: [String] = []
+    
     private var selection: (([String]) -> Void)?
     private var selectionAnswer: [String] = []
     
