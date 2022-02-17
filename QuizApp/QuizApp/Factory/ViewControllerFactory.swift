@@ -22,11 +22,15 @@ final class IOSViewControllerFactory: ViewControllerFactory {
     }
     
     func questionViewController(for question: QuizQuestion<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
+        guard let options = self.options[question] else {
+            fatalError("Couldn't create view controller with options nil")
+        }
         switch question {
         case .singleAnswer(let value):
-            return QuestionViewController(question: value, options: options[question]!, selection: answerCallback)
-        default:
-            return UIViewController()
+            return QuestionViewController(question: value, options: options, selection: answerCallback)
+        case .multipleAnswer(let value):
+            let questionViewController = QuestionViewController(question: value, options: options, isMultipleAnswer: true, selection: answerCallback)
+            return questionViewController
         }
         
     }

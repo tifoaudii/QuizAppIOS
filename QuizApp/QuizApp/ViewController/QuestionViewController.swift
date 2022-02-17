@@ -19,17 +19,20 @@ final class QuestionViewController: UIViewController, UITableViewDataSource, UIT
     private var selectionAnswer: [String] = []
     
     private let reuseIdentifier: String = "CellIdentifier"
+    private var isMultipleAnswer: Bool = false
     
-    convenience init(question: String, options: [String], selection: @escaping ([String]) -> Void) {
+    convenience init(question: String, options: [String], isMultipleAnswer: Bool = false, selection: @escaping ([String]) -> Void) {
         self.init()
         self.question = question
         self.options = options
         self.selection = selection
+        self.isMultipleAnswer = isMultipleAnswer
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         questionLabel?.text = question
+        tableView.allowsMultipleSelection = isMultipleAnswer
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
