@@ -15,10 +15,12 @@ protocol ViewControllerFactory {
 
 final class IOSViewControllerFactory: ViewControllerFactory {
     
+    private let questions: [QuizQuestion<String>]
     private let options: [QuizQuestion<String>: [String]]
     
-    init(options: [QuizQuestion<String>: [String]]) {
+    init(questions: [QuizQuestion<String>], options: [QuizQuestion<String>: [String]]) {
         self.options = options
+        self.questions = questions
     }
     
     func questionViewController(for question: QuizQuestion<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
@@ -27,15 +29,20 @@ final class IOSViewControllerFactory: ViewControllerFactory {
         }
         switch question {
         case .singleAnswer(let value):
-            return QuestionViewController(question: value, options: options, selection: answerCallback)
+            return createQuestionViewController(for: question, value: value, options: options, isMultipleAnswer: false, selection: answerCallback)
         case .multipleAnswer(let value):
-            let questionViewController = QuestionViewController(question: value, options: options, isMultipleAnswer: true, selection: answerCallback)
-            return questionViewController
+            return createQuestionViewController(for: question, value: value, options: options, isMultipleAnswer: true, selection: answerCallback)
         }
         
     }
     
     func resultViewController(for result: QuizResult<QuizQuestion<String>, [String]>) -> UIViewController {
         UIViewController()
+    }
+    
+    private func createQuestionViewController(for question: QuizQuestion<String>, value: String, options: [String], isMultipleAnswer: Bool, selection: @escaping ([String]) -> Void) -> QuestionViewController {
+        let questionViewController = QuestionViewController(question: value, options: options, isMultipleAnswer: isMultipleAnswer, selection: selection)
+        questionViewController.title = QuestionPresenter(questions: questions, question: question).title
+        return questionViewController
     }
 }

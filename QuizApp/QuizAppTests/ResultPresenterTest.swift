@@ -19,14 +19,14 @@ class ResultPresenterTest: XCTestCase {
         ]
         
         let result = QuizResult.createMock(answer: answer, score: 1)
-        let sut = ResultPresenter(result: result, correctAnswers: [:])
+        let sut = ResultPresenter(result: result, questions: [], correctAnswers: [:])
         XCTAssertEqual(sut.quizSummary, "You got 1 from 2 correct answer")
     }
     
     func test_whenGotEmptyAnswer_shouldCreateEmptyPresentableAnswer() {
         let answer: [QuizQuestion<String> : [String]] = [:]
         let result = QuizResult.createMock(answer: answer, score: 1)
-        let sut = ResultPresenter(result: result, correctAnswers: [:])
+        let sut = ResultPresenter(result: result, questions: [], correctAnswers: [:])
         XCTAssertTrue(sut.presentableAnswer.isEmpty)
     }
     
@@ -40,7 +40,7 @@ class ResultPresenterTest: XCTestCase {
         ]
         
         let result = QuizResult.createMock(answer: answer, score: 0)
-        let sut = ResultPresenter(result: result, correctAnswers: correctAnswer)
+        let sut = ResultPresenter(result: result, questions: [QuizQuestion.singleAnswer("Q1")], correctAnswers: correctAnswer)
         
         XCTAssertEqual(sut.presentableAnswer.count, 1)
         XCTAssertEqual(sut.presentableAnswer.first!.question, "Q1")
@@ -58,7 +58,7 @@ class ResultPresenterTest: XCTestCase {
         ]
         
         let result = QuizResult.createMock(answer: answer, score: 0)
-        let sut = ResultPresenter(result: result, correctAnswers: correctAnswer)
+        let sut = ResultPresenter(result: result, questions: [QuizQuestion.multipleAnswer("Q1")], correctAnswers: correctAnswer)
         
         XCTAssertEqual(sut.presentableAnswer.count, 1)
         XCTAssertEqual(sut.presentableAnswer.first!.question, "Q1")
@@ -76,7 +76,7 @@ class ResultPresenterTest: XCTestCase {
         ]
         
         let result = QuizResult.createMock(answer: answer, score: 0)
-        let sut = ResultPresenter(result: result, correctAnswers: correctAnswer)
+        let sut = ResultPresenter(result: result, questions: [QuizQuestion.singleAnswer("Q1")], correctAnswers: correctAnswer)
         
         XCTAssertEqual(sut.presentableAnswer.count, 1)
         XCTAssertEqual(sut.presentableAnswer.first!.question, "Q1")
@@ -94,7 +94,7 @@ class ResultPresenterTest: XCTestCase {
         ]
         
         let result = QuizResult.createMock(answer: answer, score: 0)
-        let sut = ResultPresenter(result: result, correctAnswers: correctAnswer)
+        let sut = ResultPresenter(result: result, questions: [QuizQuestion.multipleAnswer("Q1")], correctAnswers: correctAnswer)
         
         XCTAssertEqual(sut.presentableAnswer.count, 1)
         XCTAssertEqual(sut.presentableAnswer.first!.question, "Q1")
@@ -102,4 +102,33 @@ class ResultPresenterTest: XCTestCase {
         XCTAssertNil(sut.presentableAnswer.first!.wrongAnswer)
     }
     
+    func test_whenResultPresenterReceiveQuestions_shouldCreateOrderedPresentableAnswer() {
+        let answer = [
+            QuizQuestion.multipleAnswer("Q1") : ["A2", "A3"],
+            QuizQuestion.multipleAnswer("Q2") : ["A1", "A4"]
+        ]
+        
+        let correctAnswer = [
+            QuizQuestion.multipleAnswer("Q1") : ["A2", "A3"],
+            QuizQuestion.multipleAnswer("Q2") : ["A1", "A4"]
+        ]
+        
+        let orderedQuestions = [
+            QuizQuestion.multipleAnswer("Q1"),
+            QuizQuestion.multipleAnswer("Q2")
+            
+        ]
+        
+        let result = QuizResult.createMock(answer: answer, score: 0)
+        let sut = ResultPresenter(result: result, questions: orderedQuestions, correctAnswers: correctAnswer)
+        
+        XCTAssertEqual(sut.presentableAnswer.count, 2)
+        XCTAssertEqual(sut.presentableAnswer.first!.question, "Q1")
+        XCTAssertEqual(sut.presentableAnswer.first!.answer, "A2, A3")
+        XCTAssertNil(sut.presentableAnswer.first!.wrongAnswer)
+        
+        XCTAssertEqual(sut.presentableAnswer.last!.question, "Q2")
+        XCTAssertEqual(sut.presentableAnswer.last!.answer, "A1, A4")
+        XCTAssertNil(sut.presentableAnswer.last!.wrongAnswer)
+    }
 }
