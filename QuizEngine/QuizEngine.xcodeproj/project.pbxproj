@@ -17,6 +17,7 @@
 		8339420527AEE4B100B428FB /* QuizCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338032827AECA64009EE3F3 /* QuizCoordinatorTest.swift */; };
 		8339420627AEE4B100B428FB /* RouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8338032A27AECBD8009EE3F3 /* RouterSpy.swift */; };
 		8339420727AEE4B100B428FB /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8365FF7327A7CA3500150F63 /* FlowTest.swift */; };
+		834CD9A327CCAE2B00D57FBD /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834CD9A227CCAE2A00D57FBD /* QuizQuestion.swift */; };
 		8365FF6427A7C72700150F63 /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8365FF5B27A7C72700150F63 /* QuizEngine.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		833941EA27AEE48400B428FB /* QuizEngineiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizEngineiOS.h; sourceTree = "<group>"; };
 		833941EF27AEE48400B428FB /* QuizEngineiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		833941F427AEE48400B428FB /* QuizEngineiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizEngineiOSTests.swift; sourceTree = "<group>"; };
+		834CD9A227CCAE2A00D57FBD /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
 		8365FF5B27A7C72700150F63 /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8365FF6327A7C72700150F63 /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8365FF7327A7CA3500150F63 /* FlowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTest.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		833941E927AEE48400B428FB /* QuizEngineiOS */ = {
 			isa = PBXGroup;
 			children = (
+				834CD9A227CCAE2A00D57FBD /* QuizQuestion.swift */,
 				8365FF7527A7CBAD00150F63 /* Flow.swift */,
 				8338032427AEC97B009EE3F3 /* QuizResult.swift */,
 				8338032627AEC9AF009EE3F3 /* Router.swift */,
@@ -310,6 +313,7 @@
 				8339420327AEE4AE00B428FB /* Router.swift in Sources */,
 				8339420227AEE4AE00B428FB /* QuizCoordinator.swift in Sources */,
 				8339420427AEE4AE00B428FB /* QuizResult.swift in Sources */,
+				834CD9A327CCAE2B00D57FBD /* QuizQuestion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

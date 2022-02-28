@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import QuizEngineiOS
 
 struct QuestionPresenter {
     let questions: [QuizQuestion<String>]

@@ -7,6 +7,7 @@
 
 import XCTest
 import Foundation
+import QuizEngineiOS
 @testable import QuizApp
 
 class QuestionTest: XCTestCase {
