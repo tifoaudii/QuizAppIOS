@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import QuizEngineiOS
 @testable import QuizApp
 
 class IOSViewControllerFactoryTest: XCTestCase {
@@ -61,9 +62,33 @@ class IOSViewControllerFactoryTest: XCTestCase {
         XCTAssertTrue(viewController.tableView.allowsMultipleSelection)
     }
     
+    func test_whenCreateResultScreen_shouldCreateResultViewControllerWithCorrectSummary() {
+        let correctAnswers = [singleAnswerQuestion : ["A1"], multipleAnswerQuestion : ["A1", "A2"]]
+        let sut = createSUT(options: [:], correctAnswers: correctAnswers)
+        let userAnswers = [singleAnswerQuestion : ["A1"], multipleAnswerQuestion : ["A1", "A2"]]
+        let questions = [singleAnswerQuestion, multipleAnswerQuestion]
+        let result = QuizResult.createMock(answer: userAnswers, score: 2)
+        let presenter = ResultPresenter(result: result, questions: questions, correctAnswers: correctAnswers)
+        let viewController = sut.resultViewController(for: result) as? ResultViewController
+
+        XCTAssertEqual(viewController?.resultSummary, presenter.quizSummary)
+    }
+    
+    func test_whenCreateResultScreen_shouldCreateResultViewControllerWithPresentableAnswer() {
+        let correctAnswers = [singleAnswerQuestion : ["A1"], multipleAnswerQuestion : ["A1", "A2"]]
+        let sut = createSUT(options: [:], correctAnswers: correctAnswers)
+        let userAnswers = [singleAnswerQuestion : ["A1"], multipleAnswerQuestion : ["A1", "A2"]]
+        let questions = [singleAnswerQuestion, multipleAnswerQuestion]
+        let result = QuizResult.createMock(answer: userAnswers, score: 2)
+        let presenter = ResultPresenter(result: result, questions: questions, correctAnswers: correctAnswers)
+        let viewController = sut.resultViewController(for: result) as? ResultViewController
+
+        XCTAssertEqual(viewController?.answers.count, presenter.presentableAnswer.count)
+    }
+    
     // MARK: Helpers
-    func createSUT(options: [QuizQuestion<String>: [String]]) -> IOSViewControllerFactory {
-        return IOSViewControllerFactory(questions: [singleAnswerQuestion, multipleAnswerQuestion], options: options)
+    func createSUT(options: [QuizQuestion<String>: [String]], correctAnswers: [QuizQuestion<String> : [String]] = [:]) -> IOSViewControllerFactory {
+        return IOSViewControllerFactory(questions: [singleAnswerQuestion, multipleAnswerQuestion], options: options, correctAnswers: correctAnswers)
     }
     
     func createQuestionViewController(question: QuizQuestion<String> = .singleAnswer("")) -> QuestionViewController {

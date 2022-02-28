@@ -31,7 +31,7 @@ class NavigationControllerRouterTest: XCTestCase {
         XCTAssertEqual(navigationController.viewControllers.last, secondViewController)
     }
     
-    func test_whenRoutesToQuestion_shouldGetTheAnswerCallback() {
+    func test_whenRoutesToSingleAnswerQuestion_shouldGetTheAnswerCallback() {
         let viewController = UIViewController()
         
         factory.stub(question: QuizQuestion.singleAnswer("Q1"), with: viewController)
@@ -49,6 +49,51 @@ class NavigationControllerRouterTest: XCTestCase {
         
         XCTAssertTrue(answerCallbackCalled)
         XCTAssertEqual(receivedAnswer, ["A1"])
+    }
+    
+    func test_whenRoutesToMultipleAnswerQuestion_shouldNotGoToNextQuestion() {
+        let viewController = UIViewController()
+        
+        factory.stub(question: QuizQuestion.multipleAnswer("Q1"), with: viewController)
+        let sut = NavigationControllerRouter(navigationController, factory: factory)
+        
+        var answerCallbackCalled = false
+        
+        sut.routeTo(question: QuizQuestion.multipleAnswer("Q1"), answerCallback: { answer in
+            answerCallbackCalled = true
+        })
+        
+        XCTAssertFalse(answerCallbackCalled)
+    }
+    
+    func test_whenRoutesToMultipleAnswerQuestion_shouldConfigureRightBarButtonItem() {
+        let viewController = UIViewController()
+        
+        factory.stub(question: QuizQuestion.multipleAnswer("Q1"), with: viewController)
+        let sut = NavigationControllerRouter(navigationController, factory: factory)
+        sut.routeTo(question: QuizQuestion.multipleAnswer("Q1"), answerCallback: { _ in })
+        
+        XCTAssertNotNil(viewController.navigationItem.rightBarButtonItem)
+        XCTAssertFalse(viewController.navigationItem.rightBarButtonItem!.isEnabled)
+        
+        factory.answersStub[QuizQuestion.multipleAnswer("Q1")]!(["A1"])
+        XCTAssertTrue(viewController.navigationItem.rightBarButtonItem!.isEnabled)
+    }
+    
+    func test_whenRoutesToMultipleAnswerQuestion_shouldNavigateToNextQuestion() {
+        let viewController = UIViewController()
+        factory.stub(question: QuizQuestion.multipleAnswer("Q1"), with: viewController)
+        let sut = NavigationControllerRouter(navigationController, factory: factory)
+        
+        var answerCallbackCalled = false
+        sut.routeTo(question: QuizQuestion.multipleAnswer("Q1"), answerCallback: { _ in
+            answerCallbackCalled = true
+        })
+        
+        factory.answersStub[QuizQuestion.multipleAnswer("Q1")]!(["A1"])
+        let button = viewController.navigationItem.rightBarButtonItem!
+        button.onTap()
+        XCTAssertTrue(answerCallbackCalled)
     }
     
     func test_whenRoutesToResult_shouldPushToResult() {
@@ -106,4 +151,8 @@ class NavigationControllerRouterTest: XCTestCase {
     }
 }
 
-
+private extension UIBarButtonItem {
+    func onTap() {
+        target!.performSelector(onMainThread: action!, with: nil, waitUntilDone: true)
+    }
+}

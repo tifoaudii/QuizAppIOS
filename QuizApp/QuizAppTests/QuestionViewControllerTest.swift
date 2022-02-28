@@ -78,7 +78,7 @@ class QuestionViewControllerTest: XCTestCase {
     
     func createSUT(question: String = "", options: [String] = [], selection: @escaping (([String]) -> Void) = { _ in }) -> QuestionViewController {
         let questionExample = QuizQuestion.singleAnswer(question)
-        let factory = IOSViewControllerFactory(questions: [], options: [questionExample : options])
+        let factory = IOSViewControllerFactory(questions: [], options: [questionExample : options], correctAnswers: [:])
         let sut = factory.questionViewController(for: questionExample, answerCallback: selection) as! QuestionViewController
         sut.loadViewIfNeeded()
         return sut
