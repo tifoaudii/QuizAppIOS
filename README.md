@@ -2,7 +2,7 @@
 Simple project that demonstrating software engineering best practices using TDD and clean architecture
 
 # Architecture
-To be continue
+  <img src="QuizApp/Promo/QuizAppDiagram.png" />
 
 # Result
 <div style="display:flex;flex-direction:row">
