@@ -18,12 +18,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
         
-        let viewController = ResultViewController(resultSummary: "You answer correctly 1 from 2 questions", answers: [
-            .init(answer: "Indonesia", question: "Where rendang come from?", wrongAnswer: nil),
-            .init(answer: "Thailand", question: "Where phuket come from?", wrongAnswer: "Indonesia")
-        ])
+        let navigationController = UINavigationController()
+        let singleAnswerQuestion = QuizQuestion.singleAnswer("Where is rendang come from?")
+        let multipleAnswerQuestion = QuizQuestion.multipleAnswer("Select food from Indonesia")
         
-        window?.rootViewController = viewController
+        let factory = IOSViewControllerFactory(
+            questions: [singleAnswerQuestion, multipleAnswerQuestion],
+            options: [singleAnswerQuestion : ["Bali", "Padang", "Jawa"], multipleAnswerQuestion : ["Sushi", "Sate", "Bakso"]], correctAnswers: [singleAnswerQuestion : ["Padang"], multipleAnswerQuestion : ["Sate", "Bakso"]])
+        
+        let router = NavigationControllerRouter(navigationController, factory: factory)
+        let quizCoordinator = QuizCoordinator(
+            questions: [singleAnswerQuestion, multipleAnswerQuestion],
+            router: router,
+            correctAnswers: [singleAnswerQuestion : ["Padang"], multipleAnswerQuestion : ["Sate", "Bakso"]]
+        )
+        
+        quizCoordinator.startQuiz()
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

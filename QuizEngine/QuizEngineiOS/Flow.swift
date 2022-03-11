@@ -29,8 +29,7 @@ final class Flow<Question, Answer, R: Router> where R.Question == Question, R.An
     }
     
     private func routeToNext(from question: Question) -> (Answer) -> Void {
-        return { [weak self] (answer: Answer) in
-            guard let self = self else { return }
+        return { (answer: Answer) in
             self.answers[question] = answer
             if let currentQuestionIndex = self.questions.firstIndex(of: question), currentQuestionIndex + 1 < self.questions.count {
                 
